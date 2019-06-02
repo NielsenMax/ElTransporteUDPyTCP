@@ -1,0 +1,127 @@
+\documentclass{beamer}
+\usetheme{Copenhagen}
+ 
+ 
+%Information to be included in the title page:
+\title{Transporte TCP}
+\author{Anónimo}
+\institute{Instituto Politécnico Superior Gral. San Martín}
+\date{2019}
+ 
+\begin{document}
+ 
+\frame{\titlepage}
+ 
+\begin{frame}
+\frametitle{Conexiones TCP}
+Las conexiones del protocolo TCP se podrían resumir en 3 pasos.
+TCP es orientado a la conexión, es decir, que antes de las dos redes en cuestión se comuniquen y empiece la transferencia de datos se debe establecer una conexión.
+\vspace{5mm}
+\begin{enumerate}
+\item Establecimiento de la conexión
+\item Transferencia de datos
+\item Liberación de la conexión
+\end{enumerate}
+
+\vspace{5mm}
+
+El establecimiento de dicha conexión se realiza con el método three-way handshake y el cierre con el método four-way handshake.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Establecimiento de la conexión}
+3-way handshake (confirmación de 3 pasos): En este método el cliente y el servidor intercambian paquetes SYN y ACK antes de que la comunicación y transferencia de datos comience.
+\vspace{5mm}
+\begin{itemize}
+\item SYN: Es utilizado para establecer conexiones. En esencia es usado para indicar REQUERIMIENTO DE CONEXIÓN y CONEXIÓN ACEPTADA.
+\item ACK: Es igual a 1 para indicar que el número de reconocimiento es válido. Si vale 0, el paquete no contiene un reconocimiento, y entonces el campo número de reconocimiento es ignorado.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Establecimiento de la conexión: 3-way handshake}
+\begin{enumerate}
+\item El cliente envía un paquete SYN hacia el servidor para averiguar si este está disponible para entablar nuevas conexiones.
+\item El servidor, que tiene abiertos los puertos necesarios para que se puede iniciar una conexión, al recibir el paquete SYN del cliente le responde enviando una confirmación, un paquete SYN/ACK.
+\item El cliente responde con un paquete de confirmación ACK.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Establecimiento de la conexión: 3-way handshake}
+\includegraphics[scale=0.2]{3}\\
+\vspace{5mm}
+Una vez que este proceso concluye, las dos partes ya pueden iniciar la transferencia de datos.
+\end{frame}
+
+\begin{frame}
+\frametitle{Transferencia de datos}
+Segmento TCP: En el protocolo TCP (capa transporte) los datos se envían en forma de segmento.\\
+\includegraphics[scale=0.5]{segmento}\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Transferencia de datos: formato de segmento}
+\begin{itemize}
+\item Puerto fuente y puerto destino (16 bits) : Identifican los puntos finales locales de la conexión.
+\item Número de Secuencia (32 bits): El cliente y servidor envían sus números de secuencia (nótese distintos) durante el establecimiento de la conexión, de manera que identifica de forma inequívoca los datos de aplicación que contiene el segmento TCP. Distingue el primer byte de datos.
+\item Número de reconocimiento (32 bits) (si ACK es establecido) : El indica el siguiente byte que espera el receptor.
+\item Longitud cabecera (4 bits):Indica cuántas palabras de 32 bits están contenidas en la cabecera de TCP. Es necesario a causa de la longitud variable del campo Opciones.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Transferencia de datos: formato de segmento}
+\begin{itemize}
+\item Flags
+\begin{itemize}
+\item SYN
+\item ACK
+\item FIN
+\item URG: Es igual a 1 si el campo Puntero a urgente está en uso. 
+\item PSH: “PUSHed data”. Indica al receptor que debe entregar los datos a la aplicación inmediatamente después del arribo del paquete. No debe esperar hasta que un buffer total haya sido recibido.
+\item RST: Se utiliza para resetear una conexión que se ha vuelto confusa debido a la caída de un host o alguna otra razón.
+\end{itemize}
+\item Tamaño de la ventana: Indica cuántos bytes pueden ser enviados comenzando desde el último byte reconocido. Para propósitos de control de flujo.
+\item Suma de verificación (16 bits): Checksum utilizado para la comprobación de errores tanto en la cabecera como en los datos.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Transferencia de datos: formato de segmento}
+\begin{itemize}
+\item Código de redundancia: Verifica la cabecera y los datos.
+Puntero urgente (si URG es establecido): Se utiliza para indicar un desplazamiento en bytes a partir del número de secuencia actual en el que se encuentran los datos urgentes. Esta facilidad se brinda en lugar de los mensajes de interrupción.
+\item Opciones: Diseñado para proveer una manera de adicionar facilidades extras no cubiertas por la cabecera regular.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Liberación de la conexión}
+4-way handshake (confirmación de 4 pasos): en este método el cliente y servidor intercambian paquetes FIN y ACK una vez que la transferencia de datos haya finalizado.
+\vspace{5mm}
+\begin{itemize}
+\item FIN: Es utilizado para liberar conexiones. Especifica que el emisor no tiene más datos para transmitir. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Liberación de la conexión: 4-way handshake}
+Pasos:
+\vspace{5mm}
+\begin{enumerate}
+\item La parte que desee terminar su comunicación (generalmente el cliente) envía un paquete FIN para avisarle a la otra parte que desea concluir su comunicación.
+\item La parte que recibe el paquete FIN envía un paquete ACK de confirmación.
+\item Esa misma parte que envió el paquete ACK envía un paquete FIN para finiquitar su comunicación.
+\item La otra parte le envía un paquete ACK de confirmación.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Liberación de la conexión:4-way handshake}
+\includegraphics[scale=0.2]{4}\\
+\end{frame}
+
+ 
+\end{document}
