@@ -4,7 +4,7 @@
  
 %Information to be included in the title page:
 \title{Transporte TCP}
-\author{Anónimo}
+\author{Antunez Joaquin, Gonalez Alejo y Nielsen Maximiliano}
 \institute{Instituto Politécnico Superior Gral. San Martín}
 \date{2019}
  
@@ -123,5 +123,73 @@ Pasos:
 \includegraphics[scale=0.2]{4}\\
 \end{frame}
 
+\begin{frame}
+	\frametitle{Ventana deslizante}
+	TCP implementa una variante del protocolo de ventana deslizante. Este permite al emisor transmitir múltiples segmentos de información antes de comenzar la espera para que el receptor le confirme la recepción de los segmentos, tal confirmación se llama validación, y consiste en el envío de mensajes denominados ACK del receptor al emisor. \\
+	Características del protocolo:\\
+	\begin{enumerate}
+		\item Garantiza Confiabilidad
+		\item La aplicación recibe los datos en orden
+		\item Fuerza el control de flujo entre receptor y transmisor
+	\end{enumerate}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Ventana Deslizante comunicacíon}
+	\includegraphics[width=\textwidth]{vdemisor}
+\end{frame}
+\begin{frame}
+		\frametitle{Ventana Deslizante emisor}
+	Lado del transmisor: Se encuentran 3 punteros, que siguen las siguientes relaciones:
+	\begin{center}
+\textbf{	LastByteAcked \textless= LastByteSent \\
+	LastByteSent \textless= LastByteWritten}
+	\end{center}
+Se bufferean los bytes entre LastByteAcked ( los que están a su
+derecha ya fueron confirmados) y LastByteWritten ( los que
+están a su derecha no fueron generados …)
+\end{frame}
+
+\begin{frame}
+		\frametitle{Ventana Deslizante receptor}
+		Las relaciones son menos intuitivas debido al reordenamiento
+		\begin{center}
+			\textbf{LastByteRead \textless NextByteExpected}
+		\end{center}
+	Un byte no puede ser leído por la aplicación a menos que este se halla recibido y
+	todos su
+	precedentes.
+	\begin{center}
+	\textbf{	NextByteExpected \textless= LastByteRcvd +1}
+	\end{center}
+Si están en orden se cumple la igualdad . Si están en desorden
+\textbf{NextByteExpected} apunta al espacio vacio antes de  \textbf{LastByteRead+1}.\\
+Buffereamos los bytes entre \textbf{NextByteRead} y \textbf{LastByteRcvd}.
+\end{frame}
+ 
+ \begin{frame}
+ 		\frametitle{Ventana Deslizante Control de Flujo}
+ 		Tamaño del buffer de envío: \textbf{MaxSendBuffer}.\\
+ 		Tamaño del buffer de recepción: \textbf{MaxRcvBuffer}.\\
+ 		Lado receptor:
+ 		\begin{center}
+ 			\textbf{
+ 			LastByteRcvd - LastByteRead \textless= MaxRcvBuffer\\
+ 			 AdvertisedWindow = MaxRcvBuffer - (LastByteRcvd - NextByteRead)
+ 		}
+ 		\end{center}
+ 	Lado transmisor:
+ 	\begin{center}
+ 		\textbf{
+ 		LastByteSent - LastByteAcked  \textless= AdvertisedWindow\\
+ 		 EffectiveWindow = AdvertisedWindow - (LastByteSent - LastByteAcked)\\
+ 	 LastByteWritten - LastByteAcked \textless= MaxSendBuffer\\
+ }\end{center}
+ Bloquear Tx si (\textbf{LastByteWritten - LastByteAcked) + y \textless MaxSenderBuffer}, y
+ bytes que se desean escribir.\\
+ Siempre enviar ACK en respuesta a la llegada de segmentos. 
+ Tx persiste enviando 1 byte cuando \textbf{AdvertisedWindow = 0} \\
+
+ \end{frame}
  
 \end{document}
