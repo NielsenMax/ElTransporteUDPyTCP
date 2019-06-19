@@ -1,6 +1,7 @@
 \documentclass{beamer}
 \usetheme{Copenhagen}
- 
+ \newcommand\SecondaryTitleOPtions{
+ 	\setbeamercolor{title}{bg=structure!40} }
  
 %Information to be included in the title page:
 \title{Transporte TCP}
@@ -191,5 +192,82 @@ Buffereamos los bytes entre \textbf{NextByteRead} y \textbf{LastByteRcvd}.
  Tx persiste enviando 1 byte cuando \textbf{AdvertisedWindow = 0} \\
 
  \end{frame}
- 
+\begin{frame}
+	\frametitle{Window Management}
+	\includegraphics[width=\textwidth]{WindowManagment}
+\end{frame}
+\begin{frame}
+	\frametitle{Números de Secuencia}
+	\includegraphics[width=\textwidth]{NumeroDeSecuencia}
+\end{frame}
+\begin{frame}
+	\frametitle{ISN: Initial Sequence Numbers}
+	\includegraphics[width=\textwidth]{ISN}
+\end{frame}
+\begin{frame}
+	\frametitle{Protección contra reapariciones de igual número de secuencia}
+	\begin{itemize}
+	\item SequenceNum de 32 bits
+\end{itemize}
+	\begin{table}[]
+		\begin{tabular}{|l|c|}
+			\hline
+			\textbf{Bandwidth}&\textbf{Tiempo hasta tener problema}  \\ \hline
+			
+			T1 (1.5 Mbps)&6.4 horas  \\ \hline
+			
+			Ethernet (10 Mbps)N&57 minutos  \\ \hline
+			
+			T3 (45 Mbps)&13 minutos \\ \hline
+			
+			FDDI (100 Mbps)&6 minutos \\ \hline
+		
+			STS-3 (155 Mbps)&4 minutos \\ \hline
+			
+			STS-12 (622 Mbps)& 55 segundos\\ \hline
+			
+			STS-24 (1.2 Gbps)& 28 segundos \\ \hline
+		
+		\end{tabular}
+	\end{table}
+\end{frame}
+\begin{frame}
+	\frametitle{Agenda- 2 Parte}
+	\begin{itemize}
+		\item UDP ( User Datagram Protocol)
+		\item El Protocolo TCP
+		\begin{enumerate}
+			\item Timeouts y Retransmisiones (RTX)
+			\item Maquina de Estados Finita
+			\item Ineficiencia por envío de segmentos pequeños y
+			que el receptor los pida
+		\end{enumerate}
+
+		\begin{itemize}
+			\item Uso del ancho de banda
+			\item Sockets
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begingroup
+\SecondaryTitleOPtions
+\title{UDP}
+\subtitle{Servicio sin conexión}
+\begin{frame}
+	\titlepage
+\end{frame}
+\endgroup
+
+\begin{frame}
+	\frametitle{Encabezado UPD y aplicacion RTP}
+	\includegraphics[width=\textwidth]{EncabezadoUPDYAplicacionRTP}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Multiplexación}
+	\includegraphics[width=\textwidth]{Multiplexacion}
+\end{frame}
+
+
 \end{document}
