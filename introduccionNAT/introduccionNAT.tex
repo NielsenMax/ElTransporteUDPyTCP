@@ -1,0 +1,26 @@
+\documentclass{article}
+
+\title {Network Address Translation}
+\author{Antunez Joaquin, Gonzalez Alejo, Nielsen Maximiliano}
+\date{Junio 2019}
+ 
+\begin{document}
+ 
+\begin{titlepage}
+\pagestyle{empty}
+\maketitle
+\thispagestyle{empty}
+\end{titlepage}
+
+\section*{Introducción Lab Nat con IPtables}
+
+\subsection*{¿Qué es NAT?}
+
+El proceso de Network Address Translation es un mecanismo usado por los routers IP para que dos redes puedan intercambiar paquetes aunque tengan direcciones incompatibles.
+En una estructura donde varios hosts tienen direcciones IP privadas (red interna), cuando estos quieren enviar paquetes fuera del router NAT se encarga de traducir esa dirección interna (de rango privado) en una externa (de rango público).
+Cuando se creo el Internet en el año 1969, no se lo pensó con la magnitud que hoy tiene.
+El protocolo IPv4 consta 32 bits y, a día de hoy, un número limitado de direcciones IP; por eso es tan necesaria la NAT. Gracias a la misma se logra que, por ejemplo, en una red de una empresa donde hay cientos de computadoras, se arme una red interna donde cada host tiene una dirección interna (privada) y así se tenga solo una dirección pública o a lo sumo unas pocas más, en vez de tener cientos de direcciones públicas. Esto es fundamental para el ahorro de direcciones IP públicas IPv4 ya que estas, como todos sabemos, no son infinitas y en algún momento se van a agotar.\\
+Los usuarios internos utilizan normalmente la Source NAT para acceder a Internet; la dirección de origen se traduce y por lo tanto se mantiene privada.
+El NAT de destino se realiza en los paquetes entrantes cuando el firewall traduce una dirección de destino a una dirección de destino diferente; por ejemplo, traduce una dirección de destino pública a una dirección de destino privada.
+
+\end{document}
