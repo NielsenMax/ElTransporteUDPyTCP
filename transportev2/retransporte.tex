@@ -122,7 +122,15 @@ Pasos:
 \frametitle{Liberación de la conexión:4-way handshake}
 \includegraphics[scale=0.2]{4}\\
 \end{frame}
-
+\begin{frame}
+	\frametitle{Ventana deslizante}
+	\includegraphics[width=\textwidth]{ventdesl}
+	\begin{enumerate}
+		\item Política de retransmisión “Go Back N”.
+		\item window size es “advertised” por el receptor ( server)
+		(usualmente 4k – 8k Bytes en connection set-up).
+	\end{enumerate}
+\end{frame}
 \begin{frame}
 	\frametitle{Ventana deslizante}
 	TCP implementa una variante del protocolo de ventana deslizante. Este permite al emisor transmitir múltiples segmentos de información antes de comenzar la espera para que el receptor le confirme la recepción de los segmentos, tal confirmación se llama validación, y consiste en el envío de mensajes denominados ACK del receptor al emisor. \\
