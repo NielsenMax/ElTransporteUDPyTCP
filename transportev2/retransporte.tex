@@ -14,8 +14,9 @@
  
 \begin{frame}
 \frametitle{Conexiones TCP}
+TCP es un servicio de distribución de flujo confiable que garantiza que todos los bytes recibidos serán idénticos y en el mismo orden en que se enviaron.
 Las conexiones del protocolo TCP se podrían resumir en 3 pasos.
-TCP es orientado a la conexión, es decir, que antes de las dos redes en cuestión se comuniquen y empiece la transferencia de datos se debe establecer una conexión.
+TCP es orientado a la conexión, es decir, que antes de las dos redes en cuestión se comuniquen y empiece la transferencia de datos en forma de stream de bytes se debe establecer una conexión.
 \vspace{5mm}
 \begin{enumerate}
 \item Establecimiento de la conexión
@@ -56,6 +57,17 @@ Una vez que este proceso concluye, las dos partes ya pueden iniciar la transfere
 \end{frame}
 
 \begin{frame}
+\frametitle{Números iniciales de secuencia}
+Son números intercambiados entre las dos entidades de la comunicación. Identifican los datos dentro del flujo de bytes.
+\includegraphics[scale=0.5]{isn}\\
+\end{frame}
+
+\begin{frame}
+\frametitle{Números iniciales de secuencia}
+\includegraphics[scale=0.5]{sqn}\\
+\end{frame}
+
+\begin{frame}
 \frametitle{Transferencia de datos}
 Segmento TCP: En el protocolo TCP (capa transporte) los datos se envían en forma de segmento.\\
 \includegraphics[scale=0.5]{segmento}\\
@@ -64,9 +76,9 @@ Segmento TCP: En el protocolo TCP (capa transporte) los datos se envían en form
 \begin{frame}
 \frametitle{Transferencia de datos: formato de segmento}
 \begin{itemize}
-\item Puerto fuente y puerto destino (16 bits) : Identifican los puntos finales locales de la conexión.
+\item Puerto fuente y puerto destino (16 bits): Identifican los puntos finales locales de la conexión.
 \item Número de Secuencia (32 bits): El cliente y servidor envían sus números de secuencia (nótese distintos) durante el establecimiento de la conexión, de manera que identifica de forma inequívoca los datos de aplicación que contiene el segmento TCP. Distingue el primer byte de datos.
-\item Número de reconocimiento (32 bits) (si ACK es establecido) : El indica el siguiente byte que espera el receptor.
+\item Número de reconocimiento (32 bits) (si ACK es establecido):El indica el siguiente byte que espera el receptor.
 \item Longitud cabecera (4 bits):Indica cuántas palabras de 32 bits están contenidas en la cabecera de TCP. Es necesario a causa de la longitud variable del campo Opciones.
 \end{itemize}
 \end{frame}
@@ -74,7 +86,7 @@ Segmento TCP: En el protocolo TCP (capa transporte) los datos se envían en form
 \begin{frame}
 \frametitle{Transferencia de datos: formato de segmento}
 \begin{itemize}
-\item Flags
+\item Flags: bits de control
 \begin{itemize}
 \item SYN
 \item ACK
@@ -98,30 +110,13 @@ Puntero urgente (si URG es establecido): Se utiliza para indicar un desplazamien
 \end{frame}
 
 \begin{frame}
-\frametitle{Liberación de la conexión}
-4-way handshake (confirmación de 4 pasos): en este método el cliente y servidor intercambian paquetes FIN y ACK una vez que la transferencia de datos haya finalizado.
-\vspace{5mm}
-\begin{itemize}
-\item FIN: Es utilizado para liberar conexiones. Especifica que el emisor no tiene más datos para transmitir. 
-\end{itemize}
+\frametitle{Checksum (Suma de Verificación)}
+Es una verificación que implementa el protocolo TCP en el intercambio de paquetes.
+Consiste en el complemento a uno de la suma en complemento a uno del TCP Header, Data y el pseudo header.
+Es calculada por el emisor previo al envío del segmento para incluirla en el mismo y luego enviarlo. Luego, cuando el receptor recibe el paquete valga la redundancia, vuelve a realizar el checksum y verifica que coincida con el del segmento recibido.
+En el caso de IPv6 la comprobación debe modificarse para incluir las direcciones IPv6 de 128 bits en lugar de las direcciones IPv4 de 32 bits.
 \end{frame}
 
-\begin{frame}
-\frametitle{Liberación de la conexión: 4-way handshake}
-Pasos:
-\vspace{5mm}
-\begin{enumerate}
-\item La parte que desee terminar su comunicación (generalmente el cliente) envía un paquete FIN para avisarle a la otra parte que desea concluir su comunicación.
-\item La parte que recibe el paquete FIN envía un paquete ACK de confirmación.
-\item Esa misma parte que envió el paquete ACK envía un paquete FIN para finiquitar su comunicación.
-\item La otra parte le envía un paquete ACK de confirmación.
-\end{enumerate}
-\end{frame}
-
-\begin{frame}
-\frametitle{Liberación de la conexión:4-way handshake}
-\includegraphics[scale=0.2]{4}\\
-\end{frame}
 \begin{frame}
 	\frametitle{Ventana deslizante}
 	\includegraphics[width=\textwidth]{ventdesl}
@@ -131,6 +126,7 @@ Pasos:
 		(usualmente 4k – 8k Bytes en connection set-up).
 	\end{enumerate}
 \end{frame}
+
 \begin{frame}
 	\frametitle{Ventana deslizante}
 	TCP implementa una variante del protocolo de ventana deslizante. Este permite al emisor transmitir múltiples segmentos de información antes de comenzar la espera para que el receptor le confirme la recepción de los segmentos, tal confirmación se llama validación, y consiste en el envío de mensajes denominados ACK del receptor al emisor. \\
@@ -198,6 +194,32 @@ Buffereamos los bytes entre \textbf{NextByteRead} y \textbf{LastByteRcvd}.
  Siempre enviar ACK en respuesta a la llegada de segmentos. 
  Tx persiste enviando 1 byte cuando \textbf{AdvertisedWindow = 0} \\
 
- \end{frame}
+\end{frame}
+
+\begin{frame}
+\frametitle{Liberación de la conexión}
+4-way handshake (confirmación de 4 pasos): en este método el cliente y servidor intercambian paquetes FIN y ACK una vez que la transferencia de datos haya finalizado.
+\vspace{5mm}
+\begin{itemize}
+\item FIN: Es utilizado para liberar conexiones. Especifica que el emisor no tiene más datos para transmitir. 
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Liberación de la conexión: 4-way handshake}
+Pasos:
+\vspace{5mm}
+\begin{enumerate}
+\item La parte que desee terminar su comunicación (generalmente el cliente) envía un paquete FIN para avisarle a la otra parte que desea concluir su comunicación.
+\item La parte que recibe el paquete FIN envía un paquete ACK de confirmación.
+\item Esa misma parte que envió el paquete ACK envía un paquete FIN para finiquitar su comunicación.
+\item La otra parte le envía un paquete ACK de confirmación.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Liberación de la conexión:4-way handshake}
+\includegraphics[scale=0.2]{4}\\
+\end{frame}
  
 \end{document}
