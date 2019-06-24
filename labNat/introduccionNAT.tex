@@ -22,22 +22,61 @@ Cuando se creo el Internet en el año 1969, no se lo pensó con la magnitud que 
 El protocolo IPv4 consta 32 bits y, a día de hoy, un número limitado de direcciones IP; por eso es tan necesaria la NAT. Gracias a la misma se logra que, por ejemplo, en una red de una empresa donde hay cientos de computadoras, se arme una red interna donde cada host tiene una dirección interna (privada) y así se tenga solo una dirección pública o a lo sumo unas pocas más, en vez de tener cientos de direcciones públicas. Esto es fundamental para el ahorro de direcciones IP públicas IPv4 ya que estas, como todos sabemos, no son infinitas y en algún momento se van a agotar.\\
 Los usuarios internos utilizan normalmente la Source NAT para acceder a Internet; la dirección de origen se traduce y por lo tanto se mantiene privada.
 El NAT de destino se realiza en los paquetes entrantes cuando el firewall traduce una dirección de destino a una dirección de destino diferente; por ejemplo, traduce una dirección de destino pública a una dirección de destino privada.
+\\ \hfill\\
+Somos el encargado de redes en la empresa “noQueremosLaburarAsiQueRobamosCodigo”. En esta empresa contamos únicamente con 2 equipos, uno que corresponde al pasante de la empresa y otro a Martín el desarrollador principal.\\ 
+En esta empresa contamos con un servicio especial por parte de “StackNotInOverflow” que nos provee con código de asistencia para el desarrollo de nuestra aplicación.  “StackNotInOverflow” nos provee el código mediante una página web que está hosteada en un servidor apache. \\
+Los hosts de nuestra red poseen todas ip privadas, mientras que el servidor de “StackNotInOverflow” está bajo una ip pública.
+Este es el gráfico de nuestra red:
 \\
-Para comenzar con el laboratorio primero crearemos la siguiente estructura:\\
 \includegraphics[width=\textwidth]{graficolab}
 \\\\ \hfill \\
-Como ven disponemos de una red interna con 2 hosts y una conexión a internet donde se encuentra un servidor con IP pública.\\
-Quiere hacer Source NAT; cambiar la dirección de origen de las conexiones a algo diferente. Esto se hace en la cadena POSTROUTING, justo antes de que sea enviado. Este es un detalle importante, ya que significa que cualquier otro servicio de la máquina Linux (encaminamiento, filtrado de paquetes) verá el paquete sin cambiar.
-El Source NAT se especifica indicando (-j SNAT), y la opción (--to) especifica una dirección IP, un rango de direcciones IP, y un puerto o rango de puertos opcionales (sólo con los protocolos UDP y TCP).\\
-\hfill\\
-\textit{iptables -t nat -A POSTROUTING -s 1.1.1.0/8 -j SNAT --to 192.168.5.1}
-\\ \hfill \\
-Este comando habilita que todo lo que tenga origen en la red 1.1.1.0/8 sera enviado a la interface del router del lado de la red privada.
-\\ \hfill \\
-Quiere hacer Destination NAT. Esto se hace en la cadena PREROUTING, según entra el paquete; esto significa que cualquier otro servicio de la máquina con Linux (encaminamiento, filtrado de paquetes) verá el paquete yendo a su destino (real) (el definitivo).
-Destination NAT se especifica utilizando (-j DNAT), y la opción (--to) especifica una dirección IP, un rango de direcciones IP, y un puerto o rango de puertos opcionales (sólo para los protocolos UDP y TCP).\\\\ \hfill \\
-\textit{iptables -t nat -A PREROUTING -d 1.1.1.0/8 -j DNAT --to 1.1.1.1}
+El host 2 de la red privada corresponde a Martín y el 3 al pasante.
 \\\\ \hfill \\
-Este comando habilita que todo paquete que tenga de destino la red 1.1.1.0/8 se envie a la interface de red del router que está del lado del servidor. 
+\[INTRODUCCION TEORICA DE NAT\]
+\\\\ \hfill \\
+NAT está soportado por iptables mediante la tabla llamada nat y los objetivos SNAT, DNAT y MASQUERADE. \\
+SNAT (Source NAT) implementa la traducción de la dirección de origen de paquetes que salientes (y la transformación correspondiente del tráfico de respuesta).\\
+DNAT (Destination NAT) implementa la traducción de la dirección de destino de los paquetes entrantes (y la transformación correspondiente del tráfico de respuesta).\\
+MASQUERADE is similar a SNAT, pero se usa en situaciones donde la dirección objetivo de la traducción es desconocida (ej: cuando se usa DHCP).\\
+\\
+Para poder conectarnos al servidor tenes que habilitar la conexión usando DNAT.
+
+\begin{center}
+	\textit{iptables -t nat -A PREROUTING -p tcp -d 192.168.5.1 --dport 80 -j DNAT --to-destination 1.1.1.2:80}
+\end{center}
+
+Este comando se traduce los intento de conexión TCP al puerto 80 en 192.168.5.1 al puerto 80 al puerto 80del host 1.1.1.2.
+También necesitaremos usar SNAT:
+
+\begin{center}
+	\textit{iptables -t nat -A POSTROUTING -s 192.168.5.0/24 -j SNAT --to-source 1.1.1.1}
+\end{center}
+
+Esta cadena permite que el tráfico que tenga origen enla red 192.168.5.0/24 se lo tradusca a tener origen en 1.1.1.1 (la direccion publica del router).\\
+Para poder ver las cadenas que añadimos usaremos el comando: 
+
+\begin{center}
+	\textit{iptables -t nat -L}
+\end{center}
+
+Ahora solo nos queda iniciar el servidor apache:
+
+\begin{center}
+	\textit{/etc/init.d/apache2 start}
+\end{center}
+
+Y ahora pondremos a monitorear al acceso al servidor: 
+
+\begin{center}
+	\textit{tail -f /var/log/apache2/access.log}
+\end{center}
+
+Ahora intentaremos conectarnos al servidor mediante la PC1:
+
+\begin{center}
+	\textit{links 1.1.1.2}
+\end{center}
+Tendríamos que ver “It works!”.
+
 
 \end{document}
