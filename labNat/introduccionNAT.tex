@@ -236,4 +236,118 @@ Un servidor proxy (que se ejecuta en hardware dedicado o como software en una m�
 \addcontentsline{toc}{subsection}{Network address translation:}
 Los firewalls a menudo tienen la funcionalidad de traducción de direcciones de red (NAT), y los hosts protegidos detrás de un firewall comúnmente tienen direcciones en el "rango de direcciones privadas". Los firewalls a menudo tienen dicha funcionalidad para ocultar la verdadera dirección de la computadora que está conectada a la red.\par
 
+\section*{Implementacion Firewalls}
+
+\subsection*{Permitir conexiones entrantes establecidas y relacionadas}
+Como el tráfico de red generalmente necesita ser bidireccional (entrante y saliente) para funcionar correctamente, es típico crear una regla de firewall que permita el tráfico entrante establecido y relacionado, de modo que el router permita el tráfico de retorno a las conexiones salientes iniciadas. 
+
+ \textit{\begin{center}
+ 		\textit{iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT}
+ \end{center}}
+
+\subsection*{Permitir conexiones salientes establecidas}
+Para permitir el tráfico saliente de todas las conexiones establecidas, que suelen ser la respuesta a las conexiones entrantes legítimas.
+
+\begin{center}
+	\textit{ iptables -A OUTPUT -m conntrack --ctstate ESTABLISHED -j ACCEPT
+}
+\end{center}
+
+\subsection*{Interno a Externo}
+eth1 es la red externa, y eth0 es la red interna, esto permitirá a la interna acceder a la externa:
+
+\begin{center}
+	\textit{ iptables -A FORWARD -i eth1 -o eth0 -j ACCEPT}
+\end{center}
+
+\subsection*{Soltar paquetes no válidos}
+Algunos paquetes de tráfico de red se marcan como no válidos. A veces puede ser útil registrar este tipo de paquete, pero a menudo está bien dejarlos caer. 
+
+\begin{center}
+	\textit{ iptables -A INPUT -m conntrack --ctstate INVALID -j DROP}
+\end{center}
+
+\subsection*{Permitir todo SSH entrante}
+Para permitir que todas las conexiones SSH entrantes ejecute estos comandos:
+
+ \begin{center}
+ 	\textit{iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+ \end{center}
+
+
+\subsection*{Permitir Rsync entrante}
+Rsync, que se ejecuta en el puerto 873, se puede usar para transferir archivos de una computadora a otra.
+
+\begin{center}
+	\textit{ iptables -A INPUT -p tcp --dport 873 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+\end{center}
+
+
+\section*{Servidor Web}
+
+Los servidores web, como Apache y Nginx, normalmente escuchan las solicitudes en los puertos 80 y 443 para las conexiones HTTP y HTTPS, respectivamente.
+
+\subsection*{Permitir todos los HTTP entrantes}
+Para permitir que todas las conexiones HTTP entrantes (puerto 80) ejecute estos comandos:
+
+\begin{center}
+	\textit{iptables -A INPUT -p tcp --dport 80 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+\end{center}
+
+\subsection*{Permitir todos los HTTPS entrantes}
+Para permitir que todas las conexiones HTTPS (puerto 443) entrantes ejecute estos comandos:
+
+\begin{center}
+	\textit{ iptables -A INPUT -p tcp --dport 443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+\end{center}
+
+\subsection*{Permitir todos los HTTP y HTTPS entrantes}
+Para permitir que todas las conexiones entrantes HTTP y HTTPS (puerto 443) ejecuten estos comandos:
+
+\begin{center}
+	\textit{ iptables -A INPUT -p tcp -m multiport --dports 80,443 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+\end{center}
+
+\section*{Mail}
+Los servidores de correo, como Sendmail y Postfix, escuchan en una variedad de puertos dependiendo de los protocolos que se utilizan para la entrega de correo. 
+\subsection*{Permitir todo SMTP entrante}
+Para permitir que su servidor responda a las conexiones SMTP, puerto 25, ejecute estos comandos:
+
+ \begin{center}
+ 	\textit{iptables -A INPUT -p tcp --dport 25 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+ \end{center}
+
+\subsection*{Permitir todos los IMAP entrantes}
+Para permitir que su servidor responda a las conexiones IMAP, puerto 143, ejecute estos comandos:
+
+\begin{center}
+	\textit{ iptables -A INPUT -p tcp --dport 143 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+\end{center}
+\subsection*{Permitir todos los IMAPS entrantes}
+Para permitir que su servidor responda a las conexiones IMAPS, puerto 993, ejecute estos comandos:
+
+\begin{center}
+	\textit{ iptables -A INPUT -p tcp --dport 993 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+\end{center}
+\subsection*{Permitir todos los POP3 entrantes}
+Para permitir que su servidor responda a las conexiones POP3, puerto 110, ejecute estos comandos:
+\begin{center}
+	\textit{ iptables -A INPUT -p tcp --dport 110 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+\end{center}
+
+\subsection*{Permitir todos los POP3S entrantes}
+Para permitir que su servidor responda a las conexiones POP3S, puerto 995, ejecute estos comandos:
+
+\begin{center}
+	\textit{ iptables -A INPUT -p tcp --dport 995 -m conntrack --ctstate NEW,ESTABLISHED -j ACCEPT}
+\end{center}
+\subsection*{Bloquear todo o que no cumpla con las reglas establecidas}
+\begin{center}
+	\textit{iptables -A INPUT -j DROP}
+\end{center}
+\section*{Conclusión}
+Eso debería cubrir muchos de los comandos que se usan comúnmente al configurar un firewall de iptables. Por supuesto, iptables es una herramienta muy flexible, así que siéntase libre de mezclar y combinar los comandos con diferentes opciones para satisfacer sus necesidades específicas si no están cubiertas aquí.
+
+
+
 \end{document}
