@@ -173,6 +173,67 @@ Ahora intentaremos conectarnos al servidor mediante la PC1:
 	\textit{links 1.1.1.2}
 \end{center}
 Tendríamos que ver “It works!”.
+\\\\ \hfill\\
 
+\section*{Introducción Firewalls}
+
+\subsection*{¿Qué es Firewall?}
+
+\vspace{\baselineskip}
+Firewall es un sistema de seguridad de red que monitorea y controla el tráfico de red entrante y saliente según reglas de seguridad predeterminadas. Un firewall generalmente establece una barrera entre una red interna confiable y una red externa no confiable, como Internet\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\begin{center}
+	{\fontsize{14pt}{16.8pt}\selectfont \textbf{Tipos de firewalls}\par}
+\end{center}\par
+
+
+\vspace{\baselineskip}
+\begin{flushleft}
+	Los firewalls generalmente se clasifican como basados en red o en host. los firewalls basados en red se ubican en las gateways de LAN, WAN e intranets. Los firewalls basados en host se ubican en el nodo de la red y controlan el tráfico de red dentro y fuera de las máquinas
+\end{flushleft}\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\begin{flushleft}
+	Los firewall también varían en tipo dependiendo de dónde se origina la comunicación, dónde se intercepta y el estado de la comunicación que se está rastreando.
+\end{flushleft}\par
+
+
+\vspace{\baselineskip}
+
+\vspace{\baselineskip}
+\subsection*{Network layer o packet filters:}
+\addcontentsline{toc}{subsection}{Network layer o packet filters:}
+Opera a un nivel relativamente bajo de la pila de protocolos TCP / IP, no permitiendo que los paquetes pasen a través del firewall a menos que coincidan con el conjunto de reglas establecido.\par
+
+
+\vspace{\baselineskip}
+\subsection*{Application-layer:}
+\addcontentsline{toc}{subsection}{Application-layer:}
+
+\vspace{\baselineskip}
+Funciona en el nivel de aplicación de la pila TCP / IP (es decir, todo el tráfico del navegador, o todo el tráfico de telnet o FTP), y puede interceptar todos los paquetes que viajan hacia o desde una aplicación.\par
+
+
+\vspace{\baselineskip}
+Los firewalls de aplicación funcionan determinando si un proceso debe aceptar alguna conexión dada. Los firewalls de aplicaciones cumplen su función conectándose a las llamadas de socket para filtrar las conexiones entre la capa de aplicación y las capas inferiores del modelo OSI\par
+
+
+\vspace{\baselineskip}
+\subsection*{Proxies:}
+\addcontentsline{toc}{subsection}{Proxies:}
+Un servidor proxy (que se ejecuta en hardware dedicado o como software en una máquina de propósito general) puede actuar como un servidor de seguridad respondiendo a los paquetes de entrada (solicitudes de conexión, por ejemplo) en la forma de una aplicación, mientras bloquea otros paquetes. Un servidor proxy es una puerta de enlace de una red a otra para una aplicación de red específica, en el sentido de que funciona como un proxy en nombre del usuario de la red.\par
+
+
+\vspace{\baselineskip}
+\subsection*{Network address translation:}
+\addcontentsline{toc}{subsection}{Network address translation:}
+Los firewalls a menudo tienen la funcionalidad de traducción de direcciones de red (NAT), y los hosts protegidos detrás de un firewall comúnmente tienen direcciones en el "rango de direcciones privadas". Los firewalls a menudo tienen dicha funcionalidad para ocultar la verdadera dirección de la computadora que está conectada a la red.\par
 
 \end{document}
