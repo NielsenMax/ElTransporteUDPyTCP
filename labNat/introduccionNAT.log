@@ -1,11 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.5.28)  23 JUN 2019 22:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (MiKTeX 2.9.7050 64-bit) (preloaded format=pdflatex 2019.5.30)  25 JUN 2019 23:47
 entering extended mode
 **./introduccionNAT.tex
 (introduccionNAT.tex
 LaTeX2e <2018-12-01>
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
 File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
 \c@part=\count80
@@ -20,30 +20,31 @@ File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx.s
-ty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphicx
+.sty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.sty
-"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.s
+ty"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.s
-ty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics
+.sty"
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\trig.sty
+"
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\graphi
-cs.cfg"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-cfg\grap
+hics.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdftex
-.def"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics-def\pdft
+ex.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen103
@@ -64,8 +65,8 @@ LaTeX Font Info:    ... okay on input line 7.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
 LaTeX Font Info:    ... okay on input line 7.
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-pd
-f.mkii"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/context/base/mkii\supp-
+pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count88
 \scratchdimen=\dimen105
@@ -79,50 +80,50 @@ f.mkii"
 \makeMPintoPDFobject=\count93
 \everyMPtoPDFconversion=\toks16
 )
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-b
-ase.sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf
+-base.sty"
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infwarer
-r.sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\infwar
+err.sty"
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.sty
-"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\grfext.s
+ty"
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvdefine
-keys.sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvdefi
+nekeys.sty"
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcmds.
-sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ltxcmd
+s.sty"
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoptions.
-sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\kvoption
+s.sty"
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvsetkey
-s.sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\kvsetk
+eys.sty"
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexcmds
-.sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\etexcm
+ds.sty"
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifluatex
-.sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifluat
+ex.sty"
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 ))))
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\pdftexcm
-ds.sty"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\pdftex
+cmds.sty"
 Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-("C:\Users\Xima\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpdf.st
-y"
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/generic/oberdiek\ifpdf.
+sty"
 Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
@@ -145,88 +146,83 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 11.
  [1
 
-{C:/Users/Xima/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
+{C:/Users/admin7/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 <graficolab.jpg, id=7, 1626.075pt x 792.9625pt>
 File: graficolab.jpg Graphic file (type jpg)
 <use graficolab.jpg>
-Package pdftex.def Info: graficolab.jpg  used on input line 31.
+Package pdftex.def Info: graficolab.jpg  used on input line 21.
 (pdftex.def)             Requested size: 345.0pt x 168.23308pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--35
+Underfull \hbox (badness 10000) in paragraph at lines 16--25
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--35
+Underfull \hbox (badness 10000) in paragraph at lines 16--25
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--35
+Underfull \hbox (badness 10000) in paragraph at lines 16--25
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--35
+Underfull \hbox (badness 10000) in paragraph at lines 16--25
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 19--35
+Underfull \hbox (badness 10000) in paragraph at lines 16--25
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 19--35
-
- []
-
-[1]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 35.
+(Font)              <7> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 35.
+(Font)              <5> on input line 25.
+[1 <./graficolab.jpg>]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 77.
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--43
+("C:\Users\admin7\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 77.
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 133--139
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--43
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 35--43
-
- []
-
-
-Overfull \hbox (1.77838pt too wide) in paragraph at lines 35--43
+Overfull \hbox (1.77838pt too wide) in paragraph at lines 133--139
 \OT1/cmr/m/n/10 Para poder conec-tarnos al servi-dor tenes que ha-bil-i-tar la 
 conexion us-ando DNAT. 
  []
 
-[2 <./graficolab.jpg>] [3] (introduccionNAT.aux) ) 
+[3] [4] (introduccionNAT.aux) ) 
 Here is how much of TeX's memory you used:
- 1441 strings out of 492895
- 21595 string characters out of 3124202
+ 1462 strings out of 492895
+ 22105 string characters out of 3123268
  86196 words of memory out of 3000000
- 5366 multiletter control sequences out of 15000+200000
- 7933 words of font info for 28 fonts, out of 3000000 for 9000
+ 5383 multiletter control sequences out of 15000+200000
+ 8241 words of font info for 29 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,25p,624b,199s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Users/Xima/AppData/Local/
-Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/Xima/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/U
-sers/Xima/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr1
-0.pfb><C:/Users/Xima/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfo
-nts/cm/cmr12.pfb><C:/Users/Xima/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/p
-ublic/amsfonts/cm/cmr17.pfb><C:/Users/Xima/AppData/Local/Programs/MiKTeX 2.9/fo
-nts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on introduccionNAT.pdf (4 pages, 265466 bytes).
+ 41i,6n,25p,758b,199s stack positions out of 5000i,500n,10000p,200000b,50000s
+<C:/Users/admin7/AppData/Local/Programs/MiKTeX 2
+.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/admin7/AppData/Local/Pro
+grams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/admin7/App
+Data/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Us
+ers/admin7/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr
+10.pfb><C:/Users/admin7/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/am
+sfonts/cm/cmr12.pfb><C:/Users/admin7/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/amsfonts/cm/cmr17.pfb><C:/Users/admin7/AppData/Local/Programs/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/admin7/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on introduccionNAT.pdf (5 pages, 290326 bytes).
 PDF statistics:
- 40 PDF objects out of 1000 (max. 8388607)
+ 51 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
